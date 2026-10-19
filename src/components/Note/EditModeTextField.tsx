@@ -10,10 +10,13 @@ function EditModeTextField({ text, handleChange }: EditModeTextFieldProps) {
   return (
     <Box>
       <TextField
+        fullWidth
         multiline
         defaultValue={text}
         onChange={(e) => handleChange(e.currentTarget.value)}
-      >{text}</TextField>
+      >
+        {text}
+      </TextField>
     </Box>
   )
 }

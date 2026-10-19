@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import { useState } from "react";
 import { LiveModeTextArea } from "./LiveModeTextArea";
 import { EditModeTextField } from "./EditModeTextField";
@@ -10,16 +10,22 @@ function Note() {
   function handleClick() {
     setIsLiveMode(prev => !prev);
   }
- 
+
   return (
-    <>
-      <Button variant="contained" onClick={handleClick}>Live Mode</Button>
+    <Container maxWidth="sm">
+      <Button
+        variant="contained"
+        sx={{
+          zIndex: 2
+        }}
+        onClick={handleClick}
+      >Live Mode</Button>
       {
-        isLiveMode 
-          ? <LiveModeTextArea text={text}/> 
-          : <EditModeTextField text={text} handleChange={setText}/>
+        isLiveMode
+          ? <LiveModeTextArea text={text} />
+          : <EditModeTextField text={text} handleChange={setText} />
       }
-    </>
+    </Container>
   );
 }
 
