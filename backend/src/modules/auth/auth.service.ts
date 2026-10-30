@@ -3,6 +3,7 @@ import { User } from "../../types/user.types";
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "../../utils/jwt";
 
 import { verifyPassword } from './utils/password';
+import { InvalidCredentialsError } from "../../errors/invalidCredentials.error";
 
 const mockUser: User = {
   id: '0',
@@ -19,7 +20,7 @@ export async function login(data: LoginDto) {
   const isValid = await verifyPassword(user.passwordHash, data.password);
 
   if (!isValid) {
-    throw new Error("Invalid credentials");
+    throw new InvalidCredentialsError();
   }
 
   return {

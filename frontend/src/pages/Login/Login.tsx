@@ -1,14 +1,11 @@
-import { Box, Button, Container, Stack, TextField } from "@mui/material";
+import { Box, Button, Container, TextField } from "@mui/material";
 import { useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  function handleLogin() {
-    console.log("Clicked login button.");
-    console.log(`Email: ${email}, Password: ${password}`);
-  }
+  const { login } = useAuth();
 
   return (
     <Container maxWidth="sm">
@@ -34,7 +31,7 @@ export function Login() {
         />
         <Button
           variant="contained"
-          onClick={handleLogin}
+          onClick={_ => login({ email, password })}
         >
           Login
         </Button>

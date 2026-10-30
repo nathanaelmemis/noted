@@ -11,8 +11,8 @@ app.get("/health", (_, res) => {
   res.json({ status: "ok" });
 });
 
-app.use(errorHandler);
-
 app.use("/api/auth", authRoutes);
+
+app.use(errorHandler);
 
 export default app;
